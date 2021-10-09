@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Linq;
+using System.Net;
+using Rug.Osc;
 
 /// <summary>
 /// This object controls all the actual management of gameplay, and passes this information to GGPO
@@ -21,6 +23,8 @@ public class GameStateObject : Node
     private int hitStopRemaining = 0;
 
     private int maxHitStop = 14;
+
+    private OscSender sender;
 
     /// <summary>
     /// Stores all vital data about positions in the game in a single struct
@@ -56,6 +60,11 @@ public class GameStateObject : Node
         GD.Print(P2.internalPos);
         P1.CheckTurnAround();
         P2.CheckTurnAround();
+
+
+        sender = new OscSender(IPAddress.Loopback, 0, 6448);
+        sender.Connect();
+       
 
         hadoukens = new Dictionary<string, HadoukenPart>(); // indexed as {name, object}
         deleteQueued = new List<HadoukenPart>(); // I can't remove items from a list while enumerating that list so I use this instead
@@ -201,6 +210,8 @@ public class GameStateObject : Node
 
         AdvanceFrameAndHitstop();
         FrameAdvancePlayers();
+
+        SendMessage(1, 2, 3);
 
     }
 
@@ -378,6 +389,11 @@ public class GameStateObject : Node
     public void RemoveHadouken(HadoukenPart h)
     {
         deleteQueued.Add(h);
+    }
+
+    private void SendMessage(int a, int b, int c)
+    {
+        sender.Send(new OscMessage("/wek/inputs", 1, 2, 3));
     }
     
 }

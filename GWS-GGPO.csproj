@@ -9,6 +9,7 @@
 		<CSFile Include="addons\WAT\core\test\Test.cs" />
 	</ItemGroup>
 	<ItemGroup>
+	  <PackageReference Include="Rug.Osc" Version="1.2.5" />
 	  <PackageReference Include="System.Text.Json" Version="5.0.2" />
 	</ItemGroup>
 </Project>
