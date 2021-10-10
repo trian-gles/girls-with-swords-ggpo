@@ -248,6 +248,15 @@ public class MainScene : Node2D
         {
             AddRelease((int)Globals.Inputs.SLASH);
         }
+
+        else if (@event.IsActionPressed("wek_rec"))
+        {
+            gsObj.SendWekStart();
+        }
+        else if (@event.IsActionPressed("wek_stop"))
+        {
+            gsObj.SendWekStop();
+        }
     }
     private void AddPress(int key)
     {

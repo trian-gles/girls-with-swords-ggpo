@@ -395,5 +395,18 @@ public class GameStateObject : Node
     {
         sender.Send(new OscMessage("/wek/inputs", 1, 2, 3));
     }
-    
+
+    public void SendWekStart()
+    {
+        GD.Print("Starting wek recording");
+        sender.Send(new OscMessage("/wekinator/control/startRecording"));
+        
+    }
+
+    public void SendWekStop()
+    {
+        GD.Print("Stopping wek recording");
+        sender.Send(new OscMessage("/wekinator/control/stopRecording"));
+    }
+
 }
