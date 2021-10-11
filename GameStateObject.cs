@@ -211,7 +211,7 @@ public class GameStateObject : Node
         AdvanceFrameAndHitstop();
         FrameAdvancePlayers();
 
-        SendMessage(1, 2, 3);
+        SendMessage();
 
     }
 
@@ -391,9 +391,17 @@ public class GameStateObject : Node
         deleteQueued.Add(h);
     }
 
-    private void SendMessage(int a, int b, int c)
+    private void SendMessage()
     {
-        sender.Send(new OscMessage("/wek/inputs", 1, 2, 3));
+        var gState = GetGameState();
+        int hitSt = gState.hitStopRemaining;
+        var p1State = gState.P1State;
+        var p2State = gState.P2State;
+
+        sender.Send(new OscMessage("/wek/inputs", (float)hitSt, (float)p1State.velocity[0], (float)p1State.velocity[1], (float)p2State.velocity[0], (float)p2State.velocity[1],
+            (float)p1State.position[0], (float)p1State.position[1], (float)p2State.position[0], (float)p2State.position[1],
+            (float)p2State.hitPushRemaining, (float)p2State.stunRemaining, (float)p2State.combo));
+
     }
 
     public void SendWekStart()

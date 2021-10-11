@@ -3005,6 +3005,7 @@ position = Vector2( 10, -50 )
 script = ExtResource( 31 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="EventScheduler"]
+volume_db = -8.619
 script = ExtResource( 32 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

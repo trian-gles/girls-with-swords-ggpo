@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/clap.wav-a55de3e7f8d3bea633b983d9a662f87a.sample"
+
+[deps]
+
+source_file="res://Sounds/drums/clap.wav"
+dest_files=[ "res://.import/clap.wav-a55de3e7f8d3bea633b983d9a662f87a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
